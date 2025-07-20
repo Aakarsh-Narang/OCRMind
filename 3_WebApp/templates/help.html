@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="help-section">
+  <h2>🛠️ Help & Support</h2>
+  <p>
+    Thank you for visiting <strong>OCR Mind</strong>. This project is currently a prototype developed as part of a student initiative to explore OCR and NLP capabilities in real-world scenarios.
+  </p>
+
+  <p>
+    We apologize if you've encountered any issues while using the application. Since this is an early version, occasional bugs or limitations may occur. Your feedback is incredibly valuable in helping us improve.
+  </p>
+  <p>
+  <strong>
+    Please also keep in mind that the Tesseract OCR model used in this prototype has some limitations of it's own that needs to be satisfied in order to get accurate results.</strong><br>The limitations are also availabe in this section.
+  
+  </p> 
+  <p>
+    Still, if you faced any errors, unexpected behavior, or have suggestions, feel free to get in touch using the contact information below:
+  </p>
+
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li> Email: <a href="mailto:aakarsh.narang2@gmail.com">aakarsh.narang2@gmail.com</a></li>
+    <li> Phone: <a href="tel:+917454841288">+91 74548 41288</a></li>
+    <li> GitHub: <a href="https://github.com/Aakarsh-Narang" target="_blank">Aakarsh-Narang</a></li>
+    <li> LinkedIn: <a href="https://www.linkedin.com/in/aakarsh-narang-a7282228b/" target="_blank">aakarsh-narang</a></li>
+  </ul>
+</ul>
+
+  <p>
+    We appreciate your patience and support as we continue improving OCR Mind. Stay tuned for updates and new features!
+  </p>
+
+  <div class="container my-4">
+  <h2>
+    <button class="btn btn-outline-warning w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#tesseractLimitations" aria-expanded="false" aria-controls="tesseractLimitations">
+      ⚠️ Limitations of the Tesseract OCR Model
+    </button>
+  </h2>
+
+  <div class="collapse mt-2" id="tesseractLimitations">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Low Accuracy on Blurry or Low-Resolution Images:</strong> Performs poorly if the image is unclear.</li>
+      <li class="list-group-item"><strong>Selected Area Must Contain Text:</strong> Ensure the selected region has visible, readable text.</li>
+      <li class="list-group-item"><strong>Struggles with Handwriting & Fancy Fonts:</strong> Not suitable for cursive or decorative fonts.</li>
+      <li class="list-group-item"><strong>Issues with Skewed/Overlapping Text:</strong> Poor results with rotated or overlaid characters.</li>
+      <li class="list-group-item"><strong>No Context Awareness:</strong> Can't differentiate similar-looking characters like “O” and “0”.</li>
+      <li class="list-group-item"><strong>Confused by Complex Layouts:</strong> May scramble content in multi-column or graphical layouts.</li>
+      <li class="list-group-item"><strong>Misinterprets Special Characters:</strong> Symbols may not be reliably recognized.</li>
+      <li class="list-group-item"><strong>No Entity Recognition:</strong> Raw text only — structured understanding comes from our SpaCy NER model.</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+
+{% endblock %}

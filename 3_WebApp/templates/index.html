@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="/static/js/doc_scan.js"></script>
+
+  <!-- Dark mode script -->
+  <script>
+    window.addEventListener("load", function () {
+      const toggle = document.getElementById("darkModeToggle");
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggle.checked = true;
+      }
+
+      toggle.addEventListener("change", function () {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      });
+    });
+  </script>
+
+  <style>
+    body,
+    .navbar,
+    .container,
+    .form-control,
+    .btn-primary,
+    table,
+    th,
+    td {
+      transition: background-color 0.5s ease, color 0.5s ease, border-color 0.4s ease;
+    }
+
+    .dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+
+    .dark-mode .navbar {
+      background-color: #1f1f1f !important;
+    }
+
+    .dark-mode a,
+    .dark-mode a.nav-link, 
+    .dark-mode .display {
+      color: #2eb422 !important;
+    }
+
+    .dark-mode .btn.btn-primary {
+      background-color: #2eb422e2 !important;
+      color: #1e1e1e;
+    }
+
+    .dark-mode .form-control {
+      background-color: #333 !important;
+      color: #fff !important;
+      border-color: #555;
+    }
+
+    .dark-mode .btn-primary {
+      background-color: #3a3a3a !important;
+      border-color: #555 !important;
+    }
+
+    .dark-mode table,
+    .dark-mode th,
+    .dark-mode td {
+      background-color: #1e1e1e !important;
+      color: #ddd !important;
+      border-color: #444 !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, a, li, p, input, button, select, textarea  {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      margin-top: 15px;
+    }
+    .about_sec h1,
+    .about_sec h2,
+    .about_sec h3,
+    .about_sec h4,
+    .about_sec h5,
+    .about_sec h6,
+    .about_sec p,
+    .about_sec li {
+      text-align: left !important;
+    }
+
+    input[type="submit"],
+    input[type="file"],
+    button,
+    .btn {
+      font-family: 'Orbitron', sans-serif !important;
+    }
+
+    .display{
+      margin-bottom: 20px;
+    }
+
+    /* --- Toggle Button with Sun and Moon Icons --- */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 19px;
+      width: 19px;
+      left: 3px;
+      bottom: 3px;
+      background-image:  url('https://img.icons8.com/ios-filled/50/000000/sun.png'); 
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4d4d4d;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(25px);
+        background-image: url('https://img.icons8.com/ios-glyphs/50/ffffff/moon-symbol.png');
+    }
+
+
+
+    /* Light mode (default) */
+    .navbar {
+      background-color: #0851ed !important;
+    }
+
+    .navbar a,
+    .navbar .nav-link {
+      color: #f1eeee !important;
+    }
+
+    .dark-mode #ResultTable{
+        color: #ccc;
+    }
+
+    
+    .btn-primary:hover{
+      background-color: #26a320;
+      transform: scale(1.05);
+      transition: 0.4s ease-in-out;
+      color: white;
+    }
+
+    .nav-link:hover{
+      transform: scale(1.1);
+      transition: 0.4s ease-in-out;
+    }
+
+    /* Default (light mode) */
+    .mode-border {
+      border: 3px solid #007bff; /* Bootstrap Blue */
+      border-radius: 8px; /* optional */
+    }
+
+    /* Dark mode */
+    .dark-mode .mode-border {
+      border: 3px solid #28a745; /* Bootstrap Green */
+    }
+
+    .about_sec p,h5{
+      padding-left: 20px;
+      margin: 20px;
+    }
+
+    .help-section h1,h2,h3,h4,h5,p,ul,li,a{
+      text-align: start;
+    }
+    .help-section p,ul,li,a{
+      margin: 20px;
+      padding-left: 20px; ;
+    }
+
+
+    .container h1{
+      margin: 1.8%;
+      padding-left: 20px;
+    }
+    .container a,label{
+      margin: 0;
+    }
+    .michroma-regular {
+      font-family: "Michroma", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .help-section p,
+    .about_sec p {
+      font-family: 'Michroma', sans-serif;
+      font-size: 16px;
+    }
+
+
+
+
+
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Iceland&family=Michroma&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <title>Document Scan</title>
+</head>
+<body>
+
+  <nav class="navbar d-flex align-items-center">
+    <div class="container">
+      <a href="/" class="navbar-brand">
+        <h1 class="display ms-auto">
+          OCR Mind
+        </h1>
+      </a>
+      <div class="d-flex justify-content-around align-items-center ms-auto gap-5">
+        <a class="nav-link text-light " style="margin-top: 12px;" href="/about">About</a>
+        <a class="nav-link text-light " style="margin-top: 12px;" href="/help">Help</a>
+        <label class="switch" style="margin-top: 12px;">
+          <input type="checkbox" id="darkModeToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    {% block body %}
+    <div class="container">
+      <h4>Welcome to OCR Mind!!</h4>
+    </div>
+    {% endblock body %}
+  </div>
+
+</body>
+</html>

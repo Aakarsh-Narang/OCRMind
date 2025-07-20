@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<h3>Turning Pixels into Intelligence</h3>
+</br>
+<h4>
+    Upload the Business Card to Scan and Extract Entities
+</h4>
+</br>
+<div class="row">
+    
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <div class="d-flex flex-column flex-md-row gap-3">
+            <input type="file" class="form-control" name="image_name" required>
+            <input type="submit" value="Upload Image" class="btn btn-primary">
+        </div>
+    </form>
+</br>
+</br>
+    {% if fileupload %}
+        <div>
+        </br>
+            <button class="btn btn-primary" id="sendData"> Wrap Document and Extract Text </button>
+        </div>    
+
+    {% endif %}
+</div>
+
+<!-- CREATING CANVAS -->
+{% if fileupload %}
+    <p>{{message}}</p>
+
+    <div class="row">
+        <div class="col">
+            <canvas id="canvas" style="max-width:100%; height:auto;"></canvas>
+        </div>
+    
+    <div class="col" id="loader" align="center"></div>
+        
+    </div>
+
+
+    <script>
+        loadPoints({{points | tojson}})
+    </script>
+ 
+
+
+
+{% endif %}
+{% endblock %}
