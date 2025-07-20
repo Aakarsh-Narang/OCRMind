@@ -1,4 +1,4 @@
-📄 About This Project
+H2- 📄 About This Project
 OCR Mind is an intelligent document scanner and entity extractor designed to scan business cards and automatically identify key information such as Name, Designation, Phone Number, Email, Organization, Website, and Location.
 
 This project combines the power of Computer Vision and Natural Language Processing (NLP) to automate the extraction of structured data from unstructured scanned images. It was built by me as a student project to challenge and upgrade my machine learning and full-stack development skills.
