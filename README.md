@@ -1,4 +1,5 @@
-H2- 📄 About This Project
+#
+# 📄 About This Project
 OCR Mind is an intelligent document scanner and entity extractor designed to scan business cards and automatically identify key information such as Name, Designation, Phone Number, Email, Organization, Website, and Location.
 
 This project combines the power of Computer Vision and Natural Language Processing (NLP) to automate the extraction of structured data from unstructured scanned images. It was built by me as a student project to challenge and upgrade my machine learning and full-stack development skills.
@@ -10,48 +11,48 @@ This is why the interface also allows you to manually select the coordinates for
 The NER (Named Entity Recognition) model used in this project was trained from scratch using completely raw business card data. The data was cleaned, processed, and labeled through multiple stages of preprocessing and formatting. We used BIO tagging (Begin, Inside, Outside) to annotate each entity in the dataset accurately. This structured format allowed the model to learn and generalize entity recognition from highly diverse business card layouts.
 
 
-
-⚙️ How It Works
-1. Image Upload and Region Selection:
+#
+# ⚙️ How It Works
+ ### 1. Image Upload and Region Selection:
 Once a user uploads a business card image, the web interface provides four movable corner points, just like in professional document scanner apps. These draggable circles allow users to manually select the wrap or focus area of the card to remove unwanted borders, shadows, or distortions. This ensures the OCR engine works only on the relevant region of the document, greatly improving accuracy.
 
 
-2. Image Preprocessing (Computer Vision):
+### 2. Image Preprocessing (Computer Vision):
 The selected region is passed through various image processing techniques using OpenCV:
 
 - Perspective transformation to flatten the image
 - Grayscale conversion, thresholding, and noise removal
 - Text enhancement to improve OCR clarity
 
-3. Text Extraction with OCR:
+### 3. Text Extraction with OCR:
 The cleaned and preprocessed image is sent to Pytesseract, a Python wrapper for Google's Tesseract OCR engine. It converts the image into raw text that will then be passed to the NLP pipeline.
 
 
-4. NER-Based Entity Extraction (NLP):
+### 4. NER-Based Entity Extraction (NLP):
 The extracted text is processed using a custom-trained Named Entity Recognition (NER) model built with SpaCy. We used BIO tagging (Begin-Inside-Outside) to manually label around 300 business card samples for training. This model is trained to identify specific categories like:
 B-NAME, B-EMAIL, B-PHONE, B-DESIGNATION, B-WEBSITE, etc.
 
 
-5. Display and Output:
+### 5. Display and Output:
 Once the text is parsed, the extracted entities are shown in a structured table format. The interface also optionally highlights the recognized fields using Displacy, SpaCy’s visualization tool.
 
 
-
-📌Why This Matters
+#
+# 📌Why This Matters
 Business cards may appear simple, but in reality, they are highly unstructured and vary significantly in design, layout, and content. Manually extracting relevant information like names, emails, phone numbers, and company details is both time-consuming and error-prone. Automating this process not only enhances accuracy but also boosts productivity, especially in large-scale scenarios.
 This kind of automation can be a game-changer for several industries. It enables seamless integration with Customer Relationship Management (CRM) tools, improves lead management workflows, helps build searchable digital business card directories, and serves as a foundation for intelligent contact management systems. By leveraging OCR and Named Entity Recognition (NER), we take a step toward digitizing and organizing real-world information efficiently.
 
 
+#
+# 🔗 Built With
+* Python, Flask – Backend processing & routing
+* OpenCV, Pytesseract – Image handling and OCR
+* SpaCy – Custom NER model
+* HTML, CSS, Bootstrap, JavaScript – Web interface & interactivity
+* Draggable Canvas JS logic – For selecting card region manually
 
-🔗 Built With
-Python, Flask – Backend processing & routing
-OpenCV, Pytesseract – Image handling and OCR
-SpaCy – Custom NER model
-HTML, CSS, Bootstrap, JavaScript – Web interface & interactivity
-Draggable Canvas JS logic – For selecting card region manually
-
-
-🧬 Future Improvements
+#
+# 🧬 Future Improvements
 While this is currently a prototype trained on 300 manually labeled business cards, the system is built with scalability in mind. Here’s how it can be improved further:
 
 1. Train the NER model on a larger, more diverse dataset for higher accuracy across different layouts, fonts, and languages
