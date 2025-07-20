@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script>
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="/static/js/doc_scan.js"></script>
@@ -21,19 +27,22 @@
         document.body.classList.toggle("dark-mode");
         const isDark = document.body.classList.contains("dark-mode");
         localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+
+        document.documentElement.classList.add("transition-ready");
+
       });
     });
   </script>
 
   <style>
-    body,
-    .navbar,
-    .container,
-    .form-control,
-    .btn-primary,
-    table,
-    th,
-    td {
+    .transition-ready body,
+    .transition-ready .navbar,
+    .transition-ready .container,
+    .transition-ready .form-control,
+    .transition-ready .btn-primary,
+    .transition-ready table,
+    .transition-ready th,
+    .transition-ready td {
       transition: background-color 0.5s ease, color 0.5s ease, border-color 0.4s ease;
     }
 
@@ -226,6 +235,20 @@
       font-size: 16px;
     }
 
+    @keyframes slideInFromRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .about_sec, .help-section {
+      animation: slideInFromRight 1.2s ease-out both;
+    }
 
 
 
