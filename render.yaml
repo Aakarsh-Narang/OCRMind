@@ -4,32 +4,11 @@ services:
     runtime: python
     region: oregon
     plan: free
-
-    # ===================================
-    #   Environment & Secret Variables
-    # ===================================
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.9 # Change to your specific Python version
+        value: 3.9.9
 
-      # --- Example for adding a secret API key ---
-      # - key: MY_API_KEY
-      #   value: "some_secret_value_here"
+    # Temporarily added "&& ls -laR" to list all deployed files
+    buildCommand: "pip install -r 3_WebApp/requirements.txt && ls -laR"
 
-      # --- Example for adding a database connection string ---
-      # - key: DATABASE_URL
-      #   fromSecret: true # Recommended for sensitive data
-
-    # ===================================
-    #    Build & Start Commands
-    # ===================================
-    buildCommand: "pip install -r 3_WebApp/requirements.txt"
     startCommand: "gunicorn --workers 3 --chdir 3_WebApp main:app"
-
-    # ===================================
-    #   Optional Build Filter
-    # ===================================
-    buildFilter:
-      paths:
-        - "3_WebApp/**.py"
-        - "3_WebApp/requirements.txt"
