@@ -3,7 +3,7 @@ services:
     name: ocrmind
     runtime: python
     buildCommand: "cd 3_WebApp && pip install --upgrade pip && pip install -r requirements.txt"
-    startCommand: "cd 3_WebApp && gunicorn main:app"
+    startCommand: "gunicorn 3_WebApp.main:app"
     region: oregon
     plan: free
     envVars:
