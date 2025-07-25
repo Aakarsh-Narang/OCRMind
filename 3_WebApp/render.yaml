@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ocrmind
+    runtime: python
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "python main.py"
+    region: oregon
+    plan: free
+    envVars:
+      - key: FLASK_ENV
+        value: production
