@@ -1,15 +1,23 @@
 services:
   - type: web
     name: ocrmind
-    runtime: python
-    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
-    startCommand: "gunicorn main:app"
+    runtime: python  # CORRECTED: Use 'runtime' instead of 'env'
     region: oregon
     plan: free
+
+    # Pin the Python version to match your development environment
     envVars:
-      - key: FLASK_ENV
-        value: production
+      - key: PYTHON_VERSION
+        value: 3.9.9 # Change to your specific Python version
+
+    # Command to install dependencies from the subdirectory
+    buildCommand: "pip install -r 3_WebApp/requirements.txt"
+
+    # Command to start the server from the subdirectory
+    startCommand: "gunicorn --workers 3 --chdir 3_WebApp main:app"
+
+    # Optional: Prevents unnecessary builds
     buildFilter:
       paths:
-        - 3_WebApp/**
-    rootDir: 3_WebApp
+        - "3_WebApp/**.py"
+        - "3_WebApp/requirements.txt"
