@@ -13,7 +13,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Load NER model
-model_ner = spacy.load(r"C:\InternProject\1_BusinessCardNER\Version_1\Output\model-best")
+model_ner = spacy.load(r"..\Output\model-best")
 
 
 def cleanText(txt):
